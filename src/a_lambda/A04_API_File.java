@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class A04_File_API {
+public class A04_API_File {
     //This is a common way to read files in Java 7, but how about if you want to read two lines
     public static String processFile() throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader("data.txt"))) {
