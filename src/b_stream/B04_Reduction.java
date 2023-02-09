@@ -1,5 +1,6 @@
 package b_stream;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
@@ -8,9 +9,6 @@ import java.util.stream.Stream;
 
 public class B04_Reduction {
     public static void main(String[] args) {
-
-
-
         List<String> words = List.of("hello", "hello", "hello", "word");
         /**
          * Get the largest result
@@ -29,13 +27,20 @@ public class B04_Reduction {
          * Get any
          */
         Optional<String> any = words.stream().parallel().filter(s -> s.startsWith("h")).findAny();
-        if(any.isPresent()) System.out.println(any.get());
+        if (any.isPresent()) System.out.println(any.get());
 
         /**
          * Any matching
          */
         boolean hasMatching = words.stream().parallel().anyMatch(s -> s.startsWith("C"));
         System.out.println(hasMatching);
+
+        /**
+         * Join array elements
+         */
+        int[] intArray = {1, 2, 3, 4};
+        //we want a string "1234"
+        String string1234 = Arrays.stream(intArray).mapToObj(String::valueOf).collect(Collectors.joining());
 
         /**
          * Another set of data
@@ -87,7 +92,7 @@ public class B04_Reduction {
         System.out.println();
         for (int i = 0; i < patients.length; i++) {
             final int index = i;
-            int sum  = Stream.of(patients).mapToInt(row -> row[index]).sum();
+            int sum = Stream.of(patients).mapToInt(row -> row[index]).sum();
             System.out.printf("%7s", sum);
         }
 
